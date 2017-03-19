@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Header from '../Header';
+import Header from './Header';
 
 class Layout extends Component {
   render() {
