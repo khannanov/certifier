@@ -1,4 +1,4 @@
-import database from '../../firebase';
+import database from '../../firebase'
 import {
   FETCH_CERTIFICATIONS_START,
   FETCH_CERTIFICATIONS_SUCCESS,
@@ -20,8 +20,8 @@ const fetchListFailure = error => ({
 })
 
 export const getCertificationsList = () => dispatch => {
-  dispatch(fetchListStart);
-  return database.ref().child('Certifications').once('value', snapshot => {
+  dispatch(fetchListStart());
+  return database.ref().child('certifications').once('value', snapshot => {
     dispatch(fetchListSuccess(snapshot.val()))
   })
     .catch((error) => {
