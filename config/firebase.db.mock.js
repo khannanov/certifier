@@ -3,7 +3,7 @@ export default {
     cert1: {
       name: 'Certification name',
       description: 'certification descrition',
-      quiestions: {
+      questions: {
         q1: true,
         q2: true,
         q3: true
@@ -12,7 +12,7 @@ export default {
     cert2: {
       name: 'Certification name #2',
       description: 'certification descrition #2',
-      quiestions: {
+      questions: {
         q4: true,
         q5: true,
         q3: true
