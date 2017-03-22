@@ -1,10 +1,17 @@
 import React from 'react';
-import { CertificationsContainer } from './CertificationsContainer'
+import ConnectedCertificationsContainer, { CertificationsContainer } from './CertificationsContainer'
 import CertificationsList from './components/CertificationsList'
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import normalizedMock from '../../../config/normalized.db.mock'
+import thunk from 'redux-thunk'
+import configureMockStore from 'redux-mock-store';
+import { fbs as FirebaseServer } from '../../firebase';
 
 describe('container CertificationsList', () => {
+  afterEach(() => {
+    FirebaseServer.close( console.log('close server'));
+  })
+
   it('should render without crash', () => {
     shallow(<CertificationsContainer/>);
   })
@@ -13,7 +20,17 @@ describe('container CertificationsList', () => {
     const wrapper = shallow(<CertificationsContainer/>)
 
     expect(wrapper.contains(<CertificationsList
-      certifications={normalizedMock.certifications}
+      certifications={[]}
     />)).toBeTruthy()
   })
+
+  // it('it should retrieve data from server and pass to CertificationList', () => {
+  //   const middlewares = [ thunk ]
+  //   const mockStore = configureMockStore(middlewares)
+  //   const wrapper = mount(<CertificationsContainer/>)
+  //
+  //   expect(wrapper.contains(<CertificationsList
+  //     certifications={[]}
+  //   />)).toBeTruthy()
+  // })
 })

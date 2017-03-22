@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import FirebaseServer from 'firebase-server'
 import firebaseMock from '../config/firebase.db.mock'
 
-const fbs = new FirebaseServer(5000, 'localhost.firebaseio.test', firebaseMock)
+// const fbs = new FirebaseServer(5000, 'localhost.firebaseio.test', firebaseMock)
 
 let config
 
@@ -24,5 +24,5 @@ if (process.env.NODE_ENV == 'test') {
 firebase.initializeApp(config)
 const database = firebase.database()
 
-export { fbs }
+// export { fbs }
 export default database

@@ -8,8 +8,6 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case FETCH_CERTIFICATIONS_SUCCESS:
-
-
       return [ ...state, ...payload ]
     default:
       return state

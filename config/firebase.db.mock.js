@@ -1,4 +1,4 @@
-export default {
+const storeMock = {
   certifications: {
     cert1: {
       name: 'Certification name',
@@ -51,3 +51,6 @@ export default {
     a3: 'Answer #3'
   }
 }
+
+
+module.exports = storeMock
