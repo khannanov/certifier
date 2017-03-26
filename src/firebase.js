@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-import FirebaseServer from 'firebase-server'
-import firebaseMock from '../config/firebase.db.mock'
+// import FirebaseServer from 'firebase-server'
+// import firebaseMock from '../config/firebase.db.mock'
 
 // const fbs = new FirebaseServer(5000, 'localhost.firebaseio.test', firebaseMock)
 
 let config
 
-if (process.env.NODE_ENV == 'test') {
+if (process.env.NODE_ENV === 'test') {
   config = {
     apiKey: 'fake-api-key-for-testing-purposes-only',
     databaseURL: 'ws://localhost.firebaseio.test:5000'
@@ -24,5 +24,10 @@ if (process.env.NODE_ENV == 'test') {
 firebase.initializeApp(config)
 const database = firebase.database()
 
+firebase.database().ref().once('value', function(snap) {
+  console.log('Got value: ', snap.val());
+});
+
 // export { fbs }
+
 export default database

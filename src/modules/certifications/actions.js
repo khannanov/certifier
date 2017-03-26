@@ -19,10 +19,21 @@ const fetchListFailure = error => ({
   payload: error
 })
 
+const prepareList = certifications => {
+  return Object.keys(certifications).map(key => {
+    return {
+      id: key,
+      ...certifications[key]
+    }
+  })
+}
+
 export const getCertificationsList = () => dispatch => {
   dispatch(fetchListStart());
   return database.ref().child('certifications').once('value', snapshot => {
-    dispatch(fetchListSuccess(snapshot.val()))
+    console.log('----', snapshot.val());
+    const normalizedList = prepareList(snapshot.val())
+    dispatch(fetchListSuccess(normalizedList))
   })
     .catch((error) => {
       console.log(error)

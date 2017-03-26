@@ -8,7 +8,7 @@ import configureMockStore from 'redux-mock-store';
 import { fbs as FirebaseServer } from '../../firebase';
 
 describe('container CertificationsList', () => {
-  afterEach(() => {
+  afterAll(() => {
     FirebaseServer.close( console.log('close server'));
   })
 
@@ -23,14 +23,4 @@ describe('container CertificationsList', () => {
       certifications={[]}
     />)).toBeTruthy()
   })
-
-  // it('it should retrieve data from server and pass to CertificationList', () => {
-  //   const middlewares = [ thunk ]
-  //   const mockStore = configureMockStore(middlewares)
-  //   const wrapper = mount(<CertificationsContainer/>)
-  //
-  //   expect(wrapper.contains(<CertificationsList
-  //     certifications={[]}
-  //   />)).toBeTruthy()
-  // })
 })

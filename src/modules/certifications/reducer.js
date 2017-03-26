@@ -1,5 +1,4 @@
 import { FETCH_CERTIFICATIONS_SUCCESS } from './actionTypes'
-// import { Map } from 'immutable'
 
 const initialState = []
 
@@ -8,7 +7,11 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case FETCH_CERTIFICATIONS_SUCCESS:
-      return [ ...state, ...payload ]
+      console.log('----', payload);
+      return [
+        ...state,
+        ...payload
+      ]
     default:
       return state
   }

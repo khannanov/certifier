@@ -4,10 +4,6 @@ import CertificationList from './CertificationsList';
 import storeMock from '../../../../config/normalized.db.mock';
 
 describe('component CertificationsList', () => {
-  it('it should render without crash', () => {
-    shallow(<CertificationList />);
-  })
-
   it('renders certifications when passed in', () => {
     const { certifications } = storeMock;
     const wrapper = shallow(<CertificationList certifications={certifications}/>);

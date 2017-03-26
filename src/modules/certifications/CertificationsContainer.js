@@ -9,7 +9,6 @@ export class CertificationsContainer extends Component {
   }
 
   render () {
-    console.log('----', this.props.certifications);
     return (
       <div>
         <h1>Certifier</h1>
@@ -29,8 +28,10 @@ CertificationsContainer.propTypes = {
     })
   )
 }
-CertificationsContainer.defaultProps = {}
+CertificationsContainer.defaultProps = {
+  certifications: []
+}
 
-export default connect(state =>
-    ({certifications: state.certifications}),
-  {getCertificationsList})(CertificationsContainer)
+export default connect(state => {
+    return {certifications: state.certifications}
+  }, {getCertificationsList})(CertificationsContainer)
