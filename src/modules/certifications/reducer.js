@@ -1,4 +1,7 @@
-import { FETCH_CERTIFICATIONS_SUCCESS } from './actionTypes'
+import {
+  FETCH_CERTIFICATIONS_SUCCESS,
+  FETCH_CERTIFICATION_BY_ID_SUCCESS
+} from './actionTypes'
 
 const initialState = []
 
@@ -7,10 +10,14 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case FETCH_CERTIFICATIONS_SUCCESS:
-      console.log('----', payload);
       return [
         ...state,
         ...payload
+      ]
+    case FETCH_CERTIFICATION_BY_ID_SUCCESS:
+      return [
+        ...state,
+        {...payload}
       ]
     default:
       return state

@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router-dom'
 
 const CertificationsList = (props) => {
-  const certifications = props.certifications.map(certification => <li key={certification.id}>
+  const certifications = props.certifications.map(certification => <div key={certification.id}>
     <div>{certification.name}</div>
     <div>{certification.description}</div>
-  </li>)
+    <Link to={`/edit/${certification.id}`}>Edit</Link>
+  </div>)
 
-  return <ul>{certifications}</ul>
+  return <div>{certifications}</div>
 }
 
 CertificationsList.defaultProps = {
