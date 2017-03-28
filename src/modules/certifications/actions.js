@@ -11,7 +11,7 @@ import {
   EDIT_CERTIFICATIONS_FAILURE,
   FETCH_CERTIFICATION_BY_ID_START,
   FETCH_CERTIFICATION_BY_ID_SUCCESS,
-  FETCH_CERTIFICATION_BY_ID__FAILURE,
+  FETCH_CERTIFICATION_BY_ID_FAILURE,
 } from './actionTypes'
 
 const fetchListStart = () => ({
@@ -110,9 +110,13 @@ const editFailure = error => ({
 export const editCertification = certification => dispatch => {
   dispatch(editStart())
   return certificationUpdate(certification).then(response => {
-    dispatch(editSuccess(response.val()))
+    // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
+    dispatch(editSuccess(certification))
   })
-    .catch(error => dispatch(editFailure(error)))
+    .catch(error => {
+      console.error(error);
+      dispatch(editFailure(error))
+    })
 }
 
 // fetch
@@ -127,7 +131,7 @@ const fetchByIdSuccess = certification => ({
 })
 
 const fetchByIdFailure = error => ({
-  type: FETCH_CERTIFICATION_BY_ID__FAILURE,
+  type: FETCH_CERTIFICATION_BY_ID_FAILURE,
   payload: error
 })
 

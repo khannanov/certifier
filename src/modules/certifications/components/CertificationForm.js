@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class CertificationForm extends Component {
   render() {
@@ -11,9 +13,18 @@ class CertificationForm extends Component {
 
     return (
       <form onSubmit={onSubmit}>
-        name: <input value={name} onChange={onChange('name')} /> <br/>
-        description: <input value={description} onChange={onChange('description')} /> <br/>
-        <input type='submit'/>
+        <TextField
+          value={name}
+          floatingLabelText="certification name"
+          onChange={onChange('name')}
+        /><br />
+        <TextField
+          value={description}
+          floatingLabelText="certification description"
+          onChange={onChange('description')}
+        /><br />
+
+        <RaisedButton label="Submit" primary={true} type="submit"/>
       </form>
     );
   }

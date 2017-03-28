@@ -10,7 +10,6 @@ class CertificationEdit extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('----nextProps', nextProps);
     this.setState(nextProps.certification);
   }
 
@@ -22,13 +21,11 @@ class CertificationEdit extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-
     this.props.editCertification(this.state)
   }
 
   onChange = field => e => {
     e.preventDefault()
-
     this.setState({ [field]: e.target.value })
   }
 
@@ -39,7 +36,7 @@ class CertificationEdit extends Component {
 
     return (
       <div>
-        <CertificationForm {...this.props.certification}
+        <CertificationForm {...this.state}
                            onSubmit={this.onSubmit}
                            onChange={this.onChange}
         />
