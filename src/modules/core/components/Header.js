@@ -1,18 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { NavLink } from 'react-router-dom'
+import AppBar from 'material-ui/AppBar'
+import FlatButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton'
+import Home from 'material-ui/svg-icons/action/home';
 
 class Header extends Component {
   render() {
     return (
-      <header className="intro-header">
-        <div>
-          <ul>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/add">New certification</NavLink></li>
-          </ul>
-          <hr/>
-        </div>
-      </header>
+      <AppBar title="Certifier"
+              iconElementRight={<FlatButton href="/add" label="Add new certification"/>}
+              iconElementLeft={<IconButton href="/"><Home/></IconButton>}
+      >
+
+      </AppBar>
     )
   }
 }

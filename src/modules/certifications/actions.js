@@ -109,7 +109,7 @@ const editFailure = error => ({
 
 export const editCertification = certification => dispatch => {
   dispatch(editStart())
-  return certificationUpdate(certification).then(response => {
+  return certificationUpdate(certification).then(() => {
     // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
     dispatch(editSuccess(certification))
   })

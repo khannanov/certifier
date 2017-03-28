@@ -11,7 +11,7 @@ export class CertificationsContainer extends Component {
   render () {
     return (
       <div>
-        <h1>Certifier</h1>
+        <h1>List of certifications</h1>
         <CertificationsList certifications={this.props.certifications}/>
       </div>
     )
