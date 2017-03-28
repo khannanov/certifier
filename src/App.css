@@ -1,4 +1,4 @@
-body {
+body, div {
   font-family: 'Roboto Mono', monospace;
 }
 .App {
