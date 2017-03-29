@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61416769-4559-4bd9-b062-5cc8b8e0d763" name="Default" comment="prepare questions">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/questions/actionTypes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/questions/actions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/questions/components/QuestionList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/questions/containers/QuestionListContainer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/modules/questions/reducer.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/certifier.iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/aydar.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
@@ -14,12 +9,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/certifications/components/CertificationForm.js" afterPath="$PROJECT_DIR$/src/modules/certifications/components/CertificationForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/certifications/components/CertificationsList.js" afterPath="$PROJECT_DIR$/src/modules/certifications/components/CertificationsList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/certifications/containers/CertificationAdd.js" afterPath="$PROJECT_DIR$/src/modules/certifications/containers/CertificationAdd.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/modules/certifications/containers/CertificationEdit.js" afterPath="$PROJECT_DIR$/src/modules/certifications/containers/CertificationEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,14 +37,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/questions/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+            <state relative-caret-position="328">
+              <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,19 +109,6 @@
             <state relative-caret-position="357">
               <caret line="24" column="1" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CertificationEdit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modules/certifications/containers/CertificationEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-                <marker date="1490814019849" expanded="true" signature="269:1052" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -196,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/modules/certifications/certificationsContainer.js" />
         <option value="$PROJECT_DIR$/src/modules/rootReducer.js" />
         <option value="$PROJECT_DIR$/config/firebase.db.mock.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/normalized.db.mock.js" />
         <option value="$PROJECT_DIR$/src/modules/certifications/components/CertificationsList.test.js" />
         <option value="$PROJECT_DIR$/config/setup.js" />
@@ -230,6 +216,7 @@
         <option value="$PROJECT_DIR$/src/modules/questions/reducer.js" />
         <option value="$PROJECT_DIR$/src/modules/questions/actions.js" />
         <option value="$PROJECT_DIR$/src/modules/questions/actionTypes.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -741,7 +728,7 @@
       <workItem from="1490527249967" duration="1825000" />
       <workItem from="1490529092416" duration="19309000" />
       <workItem from="1490723400181" duration="12148000" />
-      <workItem from="1490806618334" duration="6654000" />
+      <workItem from="1490806618334" duration="6985000" />
     </task>
     <task id="LOCAL-00001" summary="firebase testing">
       <created>1489914960453</created>
@@ -806,11 +793,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490736933500</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="prepare questions">
+      <created>1490817014284</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1490817014284</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119176000" />
+    <option name="totallyTimeSpent" value="119507000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1031" extended-state="6" />
@@ -880,13 +874,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/firebase/externs/firebase-database-externs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="428" column="0" lean-forward="false" selection-start-line="428" selection-start-column="0" selection-end-line="428" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/firebase/firebase.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -1260,11 +1247,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/questions/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state relative-caret-position="328">
+          <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
