@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import { addCertification } from '../actions'
 
 class CertificationAdd extends Component {
+  //todo to reducer?
   state = {
     name: '',
-    description: ''
+    description: '',
+    questions: [],
   }
 
   onSubmit = e => {

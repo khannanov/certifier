@@ -33,6 +33,7 @@ class CertificationForm extends Component {
 CertificationForm.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  questions: PropTypes.array,
   onSubmit: PropTypes.func.isRequired,
   onChange:PropTypes.func.isRequired,
 };

@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react'
 import IconEditorMode from 'material-ui/svg-icons/editor/mode-edit'
 import IconTimer from 'material-ui/svg-icons/image/timer'
-import IconButton from 'material-ui/IconButton'
-import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 

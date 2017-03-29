@@ -40,6 +40,8 @@ class CertificationEdit extends Component {
                            onSubmit={this.onSubmit}
                            onChange={this.onChange}
         />
+
+
       </div>
     )
   }
@@ -57,5 +59,6 @@ CertificationEdit.propTypes = {
 
 
 export default connect((state, props) => ({
+  // todo selector with questions
   certification: state.certifications.filter(c => c.id === props.match.params.id)[0]
 }), { editCertification, fetchCertificationById })(CertificationEdit)
