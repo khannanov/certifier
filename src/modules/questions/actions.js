@@ -1,4 +1,4 @@
-import database from '../../firebase'
+import dbRef from '../../firebase'
 import {
   FETCH_QUESTIONS_BY_CERT_ID_START,
   FETCH_QUESTIONS_BY_CERT_ID_SUCCESS,
@@ -29,7 +29,7 @@ const fetchByCertIdFailure = error => ({
 export const getQuestionsByCertId = (id) => dispatch => {
   dispatch(fetchByCertIdStart())
 
-    return database.ref().child(`questions/${id}`).once('value')
+    return dbRef.child(`questions/${id}`).once('value')
       .then(snapshot => {
         console.log('- --- snapshot.val()', snapshot.val())
         // const questions = normalizeQuestions(snapshot.val())
@@ -41,7 +41,7 @@ export const getQuestionsByCertId = (id) => dispatch => {
   // Promise.all(
   //   ids.map(id => {
   //     console.log('send request '+id);
-  //     return database.ref().child('questions').child(id).once('value')
+  //     return dbRef.ref().child('questions').child(id).once('value')
   //       .then(snapshot => {
   //         console.log('got response ' + id)
   //         return snapshot
@@ -49,7 +49,7 @@ export const getQuestionsByCertId = (id) => dispatch => {
   //   })
   // ).then(r => console.log('parallel done after '+(Date.now() - start)+'ms') )
 
-  // return database.ref().child('questions').once('value', snapshot => {
+  // return dbRef.ref().child('questions').once('value', snapshot => {
   //   console.log('----', snapshot.val());
   //   // const normalizedList = normalizeList(snapshot.val())
   //   dispatch(fetchByIdsSuccess())
