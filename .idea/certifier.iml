@@ -16,5 +16,17 @@
     <orderEntry type="library" name="webpack-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="enzyme-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="jest-DefinitelyTyped" level="application" />
+    <orderEntry type="module-library">
+      <library name="PHP Runtime">
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
+        </CLASSES>
+        <SOURCES>
+          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="firebase-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="redux-mock-store-DefinitelyTyped" level="application" />
   </component>
 </module>

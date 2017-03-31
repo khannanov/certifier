@@ -20,36 +20,16 @@ const storeMock = {
     },
   },
   questions: {
-    q1: 'question #1',
-    answers: {
-      a1: true,
-      a2: true,
-      a3: true
+    cert1: {
+      q1: {
+        name: 'question?',
+        answers: {
+          a1: true,
+          a2: true,
+        },
+      }
     },
-    q2: 'question #2',
-    answers: {
-      a1: true,
-      a2: true,
-      a3: true
-    },
-    q3: 'question #3',
-    answers: {
-      a1: true,
-      a2: true,
-      a3: true
-    },
-    q4: 'question #4',
-    answers: {
-      a1: true,
-      a2: true,
-      a3: true
-    }
   },
-  answers: {
-    a1: 'Answer #1',
-    a2: 'Answer #2',
-    a3: 'Answer #3'
-  }
 }
 
 
