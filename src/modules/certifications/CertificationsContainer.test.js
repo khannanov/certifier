@@ -5,10 +5,11 @@ import { shallow, mount } from 'enzyme';
 import normalizedMock from '../../../config/normalized.db.mock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store';
+
 import { fbs as FirebaseServer } from '../../firebase';
 
 describe('container CertificationsList', () => {
-  afterAll(() => {
+  afterEach(() => {
     FirebaseServer.close( console.log('close server'));
   })
 

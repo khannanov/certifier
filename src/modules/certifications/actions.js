@@ -1,4 +1,4 @@
-import database from '../../firebase'
+import dbRef from '../../firebase'
 import {
   FETCH_CERTIFICATIONS_START,
   FETCH_CERTIFICATIONS_SUCCESS,
@@ -29,6 +29,8 @@ const fetchListFailure = error => ({
 })
 
 const normalizeList = certifications => {
+  const normCertifications = {}
+
   return Object.keys(certifications).map(key => {
     return {
       id: key,
@@ -37,10 +39,22 @@ const normalizeList = certifications => {
   })
 }
 
+const normalizeCertifications = certifications => {
+  const normCertifications = {}
+
+  Object.keys(certifications).map(key => {
+    const { id = key, name, description, questions } = certifications[key]
+    normCertifications[id] = { id, name, description }
+    normCertifications[id]['questions'] = Object.keys(questions)
+  })
+
+  return normCertifications;
+}
+
 export const getCertificationsList = () => dispatch => {
   dispatch(fetchListStart())
-  return database.ref().child('certifications').once('value', snapshot => {
-    const normalizedList = normalizeList(snapshot.val())
+  return dbRef.child('certifications').once('value', snapshot => {
+    const normalizedList = normalizeCertifications(snapshot.val())
     dispatch(fetchListSuccess(normalizedList))
   })
     .catch((error) => {
@@ -67,12 +81,12 @@ const addFailure = error => ({
 })
 
 const certificationCreate = certification => {
-  const newKey = database.ref().child('certifications').push().key;
+  const newKey = dbRef.child('certifications').push().key;
 
   const updates = {}
   updates['/certifications/' + newKey] = certification
 
-  return database.ref().update(updates)
+  return dbRef.update(updates)
 }
 
 export const addCertification = certification => dispatch => {

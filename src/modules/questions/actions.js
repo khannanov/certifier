@@ -14,49 +14,40 @@ const fetchByIdsSuccess = questions => ({
   payload: questions
 })
 
-const fetchByCertIdFailure = error => ({
+const fetchByIdsFailure = error => ({
   type: FETCH_QUESTIONS_BY_CERT_ID_FAILURE,
   payload: error
 })
 
-// const normalizeQuestions = questions => {
-//   return Object.keys(questions).map(id => ({
-//     id: id,
-//     name: questions[id].name,
-//   }))
-// }
+const normalizeQuestions = questions => {
+  const normQuestions = {}
 
-export const getQuestionsByCertId = (id) => dispatch => {
+  questions.map(({id, name, answers}) => {
+    normQuestions[id] = { id, name }
+    normQuestions[id]['answers'] = Object.keys(answers)
+  })
+
+  return normQuestions;
+}
+
+export const getQuestionsByIds = (ids) => dispatch => {
   dispatch(fetchByCertIdStart())
 
-    return dbRef.child(`questions/${id}`).once('value')
-      .then(snapshot => {
-        console.log('- --- snapshot.val()', snapshot.val())
-        // const questions = normalizeQuestions(snapshot.val())
-        const questions = snapshot.val()
-        dispatch(fetchByIdsSuccess(questions))
-        console.log('snap norm', questions)
-      })
-
-  // Promise.all(
-  //   ids.map(id => {
-  //     console.log('send request '+id);
-  //     return dbRef.ref().child('questions').child(id).once('value')
-  //       .then(snapshot => {
-  //         console.log('got response ' + id)
-  //         return snapshot
-  //       })
-  //   })
-  // ).then(r => console.log('parallel done after '+(Date.now() - start)+'ms') )
-
-  // return dbRef.ref().child('questions').once('value', snapshot => {
-  //   console.log('----', snapshot.val());
-  //   // const normalizedList = normalizeList(snapshot.val())
-  //   dispatch(fetchByIdsSuccess())
-  // })
-  //   .catch((error) => {
-  //     console.log(error)
-  //     dispatch(fetchByCertIdFailure(error))
-  //   })
-
+  return Promise.all(
+    ids.map(id => {
+      console.log('send request ' + id);
+      return dbRef.child(`questions/${id}`).once('value')
+        .then(snapshot => {
+          return { id, ...snapshot.val() }
+        })
+    })
+  ).then(r => {
+    const questions = normalizeQuestions(r)
+    console.log(questions)
+    dispatch(fetchByIdsSuccess(questions))
+  })
+    .catch(error => {
+      console.error(error);
+      dispatch(fetchByIdsFailure(error))
+    })
 }

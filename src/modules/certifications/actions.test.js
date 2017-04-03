@@ -1,7 +1,8 @@
 import * as actions from './actions'
 import firebaseMock from '../../../config/firebase.db.mock'
+import normalizedMock from '../../../config/normalized.db.mock'
 import thunk from 'redux-thunk'
-// import { fbs as FirebaseServer } from '../../firebase';
+import { fbs as FirebaseServer } from '../../firebase';
 
 import {
   FETCH_CERTIFICATIONS_START,
@@ -15,16 +16,16 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 describe('certificate async actions', () => {
-  // afterEach(() => {
-  //   FirebaseServer.close( console.log('close server'));
-  // })
+  afterEach(() => {
+    FirebaseServer.close( console.log('close server'));
+  })
 
   it('creates FETCH_CERTIFICATIONS_SUCCESS when fetching certifications has been done', () => {
     const expectedActions = [
       { type: FETCH_CERTIFICATIONS_START },
       {
         type: FETCH_CERTIFICATIONS_SUCCESS,
-        payload: firebaseMock.certifications
+        payload: normalizedMock.certifications
       }
     ]
     const store = mockStore({ certifications: [] })
