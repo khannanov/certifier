@@ -91,7 +91,7 @@ export const addCertification = certification => dispatch => {
 // edit
 
 const certificationUpdate = certification => {
-  return database.ref('/certifications/' + certification.id).set({
+  return dbRef('/certifications/' + certification.id).set({
     ...certification
   })
 }
@@ -140,7 +140,7 @@ const fetchByIdFailure = error => ({
 
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
-  return database.ref(`/certifications/${id}`).once('value').then(snapshot => {
+  return dbRef(`/certifications/${id}`).once('value').then(snapshot => {
     const certification = { id, ...snapshot.val()}
     dispatch(fetchByIdSuccess(certification))
   })

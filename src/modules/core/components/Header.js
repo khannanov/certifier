@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'

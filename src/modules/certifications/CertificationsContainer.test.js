@@ -21,7 +21,7 @@ describe('container CertificationsList', () => {
     const wrapper = shallow(<CertificationsContainer/>)
 
     expect(wrapper.contains(<CertificationsList
-      certifications={[]}
+      certifications={{}}
     />)).toBeTruthy()
   })
 })

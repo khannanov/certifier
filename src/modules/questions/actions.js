@@ -5,7 +5,7 @@ import {
   FETCH_QUESTIONS_BY_CERT_ID_FAILURE
 } from './actionTypes'
 
-const fetchByCertIdStart = () => ({
+const fetchByIdsStart = () => ({
   type: FETCH_QUESTIONS_BY_CERT_ID_START,
 })
 
@@ -31,7 +31,7 @@ const normalizeQuestions = questions => {
 }
 
 export const getQuestionsByIds = (ids) => dispatch => {
-  dispatch(fetchByCertIdStart())
+  dispatch(fetchByIdsStart())
 
   return Promise.all(
     ids.map(id => {
@@ -44,6 +44,7 @@ export const getQuestionsByIds = (ids) => dispatch => {
   ).then(r => {
     const questions = normalizeQuestions(r)
     console.log(questions)
+
     dispatch(fetchByIdsSuccess(questions))
   })
     .catch(error => {

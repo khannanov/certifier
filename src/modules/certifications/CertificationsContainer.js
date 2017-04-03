@@ -20,7 +20,7 @@ export class CertificationsContainer extends Component {
 
 CertificationsContainer.propTypes = {
   getCertificationsList: PropTypes.func,
-  certifications: PropTypes.arrayOf(
+  certifications: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -29,7 +29,7 @@ CertificationsContainer.propTypes = {
   )
 }
 CertificationsContainer.defaultProps = {
-  certifications: []
+  certifications: {}
 }
 
 export default connect(state => {
