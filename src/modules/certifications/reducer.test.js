@@ -11,7 +11,7 @@ describe('reducer certifications', () => {
     ).toEqual(initialState)
   })
 
-  it('should handle FETCH_LIST_SUCCESS', () => {
+  it(`should handle ${FETCH_CERTIFICATIONS_SUCCESS}`, () => {
     expect(
       reducer(initialState, {
         type: FETCH_CERTIFICATIONS_SUCCESS,

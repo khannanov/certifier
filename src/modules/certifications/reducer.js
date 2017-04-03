@@ -10,10 +10,15 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case FETCH_CERTIFICATIONS_SUCCESS:
-      return [
-        ...state,
+      const certifications = {}
+       Object.keys(state).map(id => {
+         certifications[id] = { ...state[id] }
+      })
+
+      return {
+        ...certifications,
         ...payload
-      ]
+      }
     case FETCH_CERTIFICATION_BY_ID_SUCCESS:
       return [
         ...state,

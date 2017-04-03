@@ -28,17 +28,6 @@ const fetchListFailure = error => ({
   payload: error
 })
 
-const normalizeList = certifications => {
-  const normCertifications = {}
-
-  return Object.keys(certifications).map(key => {
-    return {
-      id: key,
-      ...certifications[key]
-    }
-  })
-}
-
 const normalizeCertifications = certifications => {
   const normCertifications = {}
 
