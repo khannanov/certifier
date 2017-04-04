@@ -2,8 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import CertificationForm from '../components/CertificationForm'
 import { connect }  from 'react-redux'
 import { editCertification, fetchCertificationById } from '../actions'
+import questions from '../../questions'
 
-class CertificationEdit extends Component {
+const { QuestionForm } = questions.components
+
+export class CertificationEdit extends Component {
   state = {
     name: '',
     description: ''
@@ -40,8 +43,7 @@ class CertificationEdit extends Component {
                            onSubmit={this.onSubmit}
                            onChange={this.onChange}
         />
-
-
+        <QuestionForm/>
       </div>
     )
   }
@@ -51,7 +53,8 @@ CertificationEdit.propTypes = {
   certification: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    questions: PropTypes.array
   }),
   fetchCertificationById: PropTypes.func,
   editCertification: PropTypes.func

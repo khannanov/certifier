@@ -1,17 +1,16 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import QuestionList from './QuestionList'
+import { shallow } from 'enzyme'
+import normalizedMock from '../../../../config/normalized.db.mock'
 
-const QuestionList = ({questions}) => <div>
-  {Object.keys(questions).map(id => <span>{questions[id].name}</span>)}
-</div>
+describe('QuestionList component', () => {
+  it('should render without crash', () => {
+    const wrapper = shallow(<QuestionList questions={{}}/>)
+    expect(wrapper.length).toBe(1)
+  })
 
-QuestionList.propTypes = {
-  questions: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      answers: PropTypes.array
-    })
-  )
-}
-
-export default QuestionList
+  it('should render question list', () => {
+    const wrapper = shallow(<QuestionList questions={normalizedMock.questions}/>)
+    expect(wrapper.find('span').length).toBe(Object.keys(normalizedMock.questions).length)
+  })
+})

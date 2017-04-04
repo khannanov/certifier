@@ -1,12 +1,10 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { shallow } from 'enzyme'
+import QuestionForm from './QuestionForm'
 
-const QuestionForm = (props) => {
-  return (
-    <div></div>
-  )
-}
-
-QuestionForm.propTypes = {}
-QuestionForm.defaultProps = {}
-
-export default QuestionForm
+describe('QuestionForm component', () => {
+  it('should render without crash', () => {
+    const wrapper = shallow(<QuestionForm/>)
+    expect(wrapper.length).toBe(1)
+  })
+})

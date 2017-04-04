@@ -3,7 +3,7 @@ import {
   FETCH_CERTIFICATION_BY_ID_SUCCESS
 } from './actionTypes'
 
-const initialState = []
+const initialState = {}
 
 export default function(state = initialState, action) {
   const { type, payload } = action
@@ -20,10 +20,10 @@ export default function(state = initialState, action) {
         ...payload
       }
     case FETCH_CERTIFICATION_BY_ID_SUCCESS:
-      return [
+      return {
         ...state,
-        {...payload}
-      ]
+        ...payload
+      }
     default:
       return state
   }
