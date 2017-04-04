@@ -2,14 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import CertificationForm from '../components/CertificationForm'
 import { connect }  from 'react-redux'
 import { editCertification, fetchCertificationById } from '../actions'
-import questions from '../../questions'
-
-const { QuestionForm } = questions.components
+import RaisedButton from 'material-ui/RaisedButton'
 
 export class CertificationEdit extends Component {
   state = {
     name: '',
-    description: ''
+    description: '',
+    questions: []
   }
 
   componentWillReceiveProps (nextProps) {
@@ -39,11 +38,17 @@ export class CertificationEdit extends Component {
 
     return (
       <div>
-        <CertificationForm {...this.state}
+        <CertificationForm name={this.state.name}
+                           description={this.state.description}
                            onSubmit={this.onSubmit}
                            onChange={this.onChange}
         />
-        <QuestionForm/>
+        <br/>
+        <RaisedButton label="Add question"
+                      primary={true}
+                      href={`/question/add/`}
+                      labelPosition="before"
+        />
       </div>
     )
   }
@@ -61,7 +66,7 @@ CertificationEdit.propTypes = {
 }
 
 
-export default connect((state, props) => ({
-  // todo selector with questions
-  certification: state.certifications.filter(c => c.id === props.match.params.id)[0]
+export default connect(({ certifications }, props) => ({
+    // todo selector with questions
+    certification: certifications[props.match.params.id]
 }), { editCertification, fetchCertificationById })(CertificationEdit)

@@ -4,6 +4,7 @@ import './index.css';
 import { Provider } from 'react-redux'
 import store from './modules'
 import certifications from './modules/certifications'
+import questions from './modules/questions'
 import Core from './modules/core'
 import {
   BrowserRouter as Router,
@@ -26,6 +27,7 @@ ReactDOM.render(
             <Route exact path="/" component={certifications.CertificationsContainer}/>
             <Route exact path="/add" component={certifications.containers.CertificationAdd}/>
             <Route path="/edit/:id" component={certifications.containers.CertificationEdit}/>
+            <Route exact path="/question/add" component={questions.containers.QuestionAddContainer}/>
             <Route render={({location}) => (
               <div>
                 <h3>404. No match for <code>{location.pathname}</code></h3>

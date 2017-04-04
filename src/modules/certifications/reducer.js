@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
     case FETCH_CERTIFICATION_BY_ID_SUCCESS:
       return {
         ...state,
-        ...payload
+        [payload.id]: { ...payload }
       }
     default:
       return state

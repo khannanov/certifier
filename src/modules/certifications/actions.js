@@ -81,8 +81,6 @@ const certificationCreate = certification => {
 export const addCertification = certification => dispatch => {
   dispatch(addStart())
   return certificationCreate(certification).then(response => {
-    console.log('---- add ', response);
-
     dispatch(addSuccess(response.val()))
   })
     .catch(error => dispatch(addFailure(error)))
@@ -140,7 +138,7 @@ const fetchByIdFailure = error => ({
 
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
-  return dbRef(`/certifications/${id}`).once('value').then(snapshot => {
+  return dbRef.child(`/certifications/${id}`).once('value').then(snapshot => {
     const certification = { id, ...snapshot.val()}
     dispatch(fetchByIdSuccess(certification))
   })
