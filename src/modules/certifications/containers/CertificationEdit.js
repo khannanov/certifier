@@ -3,6 +3,9 @@ import CertificationForm from '../components/CertificationForm'
 import { connect }  from 'react-redux'
 import { editCertification, fetchCertificationById } from '../actions'
 import RaisedButton from 'material-ui/RaisedButton'
+import questions from '../../questions'
+
+const { QuestionListContainer } = questions.containers
 
 export class CertificationEdit extends Component {
   state = {
@@ -49,6 +52,7 @@ export class CertificationEdit extends Component {
                       href={`/question/add/`}
                       labelPosition="before"
         />
+        <QuestionListContainer questionsIds={questions}/>
       </div>
     )
   }

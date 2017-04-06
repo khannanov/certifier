@@ -17,7 +17,7 @@ describe('question async actions', () => {
     FirebaseServer.close( console.log('close server'));
   })
 
-  fit('creates FETCH_QUESTIONS_BY_IDS_SUCCESS when fetching certifications has been done', () => {
+  xit('creates FETCH_QUESTIONS_BY_IDS_SUCCESS when fetching certifications has been done', () => {
     const expectedActions = [
       { type: FETCH_QUESTIONS_BY_IDS_START },
       {

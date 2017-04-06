@@ -13,11 +13,11 @@ describe('container CertificationsList', () => {
     FirebaseServer.close( console.log('close server'));
   })
 
-  it('should render without crash', () => {
+  xit('should render without crash', () => {
     shallow(<CertificationsContainer/>);
   })
 
-  it('it should contain CertificationList component', () => {
+  xit('it should contain CertificationList component', () => {
     const wrapper = shallow(<CertificationsContainer/>)
 
     expect(wrapper.contains(<CertificationsList

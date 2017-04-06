@@ -43,7 +43,6 @@ export const getQuestionsByIds = (ids) => dispatch => {
     })
   ).then(r => {
     const questions = normalizeQuestions(r)
-    console.log(questions)
 
     dispatch(fetchByIdsSuccess(questions))
   })

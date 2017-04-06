@@ -139,7 +139,11 @@ const fetchByIdFailure = error => ({
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
   return dbRef.child(`/certifications/${id}`).once('value').then(snapshot => {
-    const certification = { id, ...snapshot.val()}
+    const certification = {
+      id,
+      ...snapshot.val(),
+      questions: Object.keys(snapshot.val().questions)
+    }
     dispatch(fetchByIdSuccess(certification))
   })
     .catch(error => dispatch(fetchByIdFailure(error)))
