@@ -4,6 +4,10 @@ import { getQuestionsByIds } from '../actions'
 import QuestionList from '../components/QuestionList'
 
 export class QuestionListContainer extends Component {
+  componentWillReceiveProps (nextProps) {
+    this.setState(nextProps.questions);
+  }
+
   componentDidMount () {
     this.props.getQuestionsByIds(this.props.questionsIds);
   }
@@ -33,6 +37,17 @@ QuestionListContainer.propTypes = {
 }
 
 export default connect(
-  null,
+  ({ questions }, props) => {
+    const filteredIds = Object.keys(questions).filter(qid =>
+      props.questionsIds.includes(qid))
+
+    const filteredQuestions = {}
+
+    filteredIds.map(id => {
+      filteredQuestions[id] = questions[id]
+    })
+
+    return { questions: filteredQuestions }
+  },
   { getQuestionsByIds }
 )(QuestionListContainer)

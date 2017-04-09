@@ -3,8 +3,8 @@ import QuestionList from './QuestionList'
 import { shallow } from 'enzyme'
 import normalizedMock from '../../../../config/normalized.db.mock'
 
-describe('QuestionList component', () => {
-  fit('should render without crash', () => {
+xdescribe('QuestionList component', () => {
+  it('should render without crash', () => {
     const wrapper = shallow(<QuestionList questions={{}}/>)
     expect(wrapper.length).toBe(1)
   })

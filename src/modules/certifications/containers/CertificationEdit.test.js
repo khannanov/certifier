@@ -10,7 +10,7 @@ import { fbs as FirebaseServer } from '../../../firebase';
 const { QuestionListContainer } = questions.containers
 let wrapper
 
-describe(`CertificationEdit container`, () => {
+xdescribe(`CertificationEdit container`, () => {
   afterAll(() => {
     FirebaseServer.close( console.log('close server'));
   })

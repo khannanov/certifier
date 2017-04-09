@@ -1,8 +1,8 @@
 import firebase from 'firebase'
-import FirebaseServer from 'firebase-server'
-import firebaseMock from '../config/firebase.db.mock'
+import FirebaseServer from 'firebase-server' // eslint-disable-next-line
+import firebaseMock from '../config/firebase.db.mock' // eslint-disable-next-line
 
-let fbs
+let fbs // eslint-disable-next-line
 let dbRef
 let config
 
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'test') {
   }
 } else {
   const port = 6002
-  fbs = new FirebaseServer(port, 'localhost.firebaseio.test', firebaseMock)
+  fbs = new FirebaseServer(port, 'localhost.firebaseio.test', firebaseMock) // eslint-disable-next-line
 
   config = {
     apiKey: 'fake-api-key-for-testing-purposes-only',
@@ -28,9 +28,9 @@ firebase.initializeApp(config)
 dbRef = firebase.database().ref()
 
 dbRef.once('value', function(snap) {
-  // console.log('Got value: ', snap.val())
+  console.log('Got value: ', snap.val())
 });
 
-export { fbs }
+export { fbs } // eslint-disable-next-line
 
 export default dbRef

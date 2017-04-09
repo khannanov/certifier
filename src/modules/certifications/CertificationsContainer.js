@@ -33,7 +33,8 @@ CertificationsContainer.defaultProps = {
   certifications: {}
 }
 
-export default connect(
-  state => state.certifications,
+export default connect(state => ({
+    certifications: state.certifications
+  }),
   { getCertificationsList }
 )(CertificationsContainer)

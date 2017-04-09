@@ -10,13 +10,13 @@ const { certifications }= normalizedMock
 describe('reducer certifications', () => {
   const initialState = {};
 
-  fit('should return the initial state', () => {
+  xit('should return the initial state', () => {
     expect(
       reducer(initialState, {})
     ).toEqual(initialState)
   })
 
-  fit(`should handle ${FETCH_CERTIFICATIONS_SUCCESS}`, () => {
+  xit(`should handle ${FETCH_CERTIFICATIONS_SUCCESS}`, () => {
     expect(
       reducer(initialState, {
         type: FETCH_CERTIFICATIONS_SUCCESS,
@@ -25,7 +25,7 @@ describe('reducer certifications', () => {
     ).toEqual(normalizedMock.certifications)
   })
 
-  fit(`should handle action ${FETCH_CERTIFICATION_BY_ID_SUCCESS}`, () => {
+  xit(`should handle action ${FETCH_CERTIFICATION_BY_ID_SUCCESS}`, () => {
     expect(
       reducer(initialState, {
         type: FETCH_CERTIFICATION_BY_ID_SUCCESS,

@@ -1,8 +1,21 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router-dom'
+import { List, ListItem } from 'material-ui/List'
+import QuestionAnswerIcon from 'material-ui/svg-icons/action/question-answer'
 
-const QuestionList = ({questions}) => <div>
-  {Object.keys(questions).map(id => <span key={id}>{questions[id].name}</span>)}
-</div>
+const QuestionList = ({questions}) =>
+  <div>
+    <p>Questions:</p>
+    <List>
+      {Object.keys(questions).map(id =>
+        <ListItem key={id}
+                  leftIcon={<QuestionAnswerIcon/>}
+                  containerElement={<Link to={`/question/edit/${id}`}/>}>
+          {questions[id].name}
+        </ListItem>
+      )}
+    </List>
+  </div>
 
 QuestionList.propTypes = {
   questions: PropTypes.objectOf(

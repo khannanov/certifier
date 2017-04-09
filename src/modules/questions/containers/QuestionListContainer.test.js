@@ -6,12 +6,12 @@ import normalizedMock from '../../../../config/normalized.db.mock'
 import { getQuestionsByIds } from '../actions'
 
 describe('container QuestionList', () => {
-  fit('it should contain QuestionList component', () => {
+  xit('it should contain QuestionList component', () => {
     const wrapper = shallow(<QuestionListContainer/>)
     expect(wrapper.find(QuestionList)).toBeTruthy()
   })
 
-  fit('should contain questionIds props', () => {
+  xit('should contain questionIds props', () => {
     const wrapper = mount(<QuestionListContainer questionsIds={Object.keys(normalizedMock.questions)}
                                                  getQuestionsByIds={getQuestionsByIds}
     />)
@@ -20,7 +20,7 @@ describe('container QuestionList', () => {
 })
 
 describe('connected container QuestionList', () => {
-  fit('should contain action prop', () => {
+  xit('should contain action prop', () => {
     // todo @see http://www.thereformedprogrammer.net/unit-testing-react-components-that-use-redux/
     const wrapper = mount(<QuestionListContainerConnected questionsIds={Object.keys(normalizedMock.questions)}
                                                             getQuestionsByIds={getQuestionsByIds}

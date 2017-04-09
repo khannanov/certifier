@@ -22,7 +22,9 @@ const fetchByIdsFailure = error => ({
 const normalizeQuestions = questions => {
   const normQuestions = {}
 
-  questions.map(({id, name, answers}) => {
+  Object.keys(questions).map(qid => {
+    const { id = qid, name, answers} = questions[qid]
+
     normQuestions[id] = { id, name }
     normQuestions[id]['answers'] = Object.keys(answers)
   })
@@ -35,7 +37,7 @@ export const getQuestionsByIds = (ids) => dispatch => {
 
   return Promise.all(
     ids.map(id => {
-      console.log('send request ' + id);
+      // console.log('send request ' + id);
       return dbRef.child(`questions/${id}`).once('value')
         .then(snapshot => {
           return { id, ...snapshot.val() }
@@ -43,7 +45,6 @@ export const getQuestionsByIds = (ids) => dispatch => {
     })
   ).then(r => {
     const questions = normalizeQuestions(r)
-
     dispatch(fetchByIdsSuccess(questions))
   })
     .catch(error => {
