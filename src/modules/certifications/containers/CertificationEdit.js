@@ -49,7 +49,7 @@ export class CertificationEdit extends Component {
         <br/>
         <RaisedButton label="Add question"
                       primary={true}
-                      href={`/question/add/`}
+                      href={`/certification/${this.state.id}/question/add/`}
                       labelPosition="before"
         />
         <QuestionListContainer questionsIds={this.state.questions}/>
