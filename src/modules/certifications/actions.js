@@ -1,4 +1,6 @@
-import dbRef from '../../firebase'
+// import dbRef from '../../firebase'
+import { getAll } from './apiCalls'
+
 import {
   FETCH_CERTIFICATIONS_START,
   FETCH_CERTIFICATIONS_SUCCESS,
@@ -42,8 +44,9 @@ const normalizeCertifications = certifications => {
 
 export const getCertificationsList = () => dispatch => {
   dispatch(fetchListStart())
-  return dbRef.child('certifications').once('value', snapshot => {
-    const normalizedList = normalizeCertifications(snapshot.val())
+
+  return getAll().then(certifications => {
+    const normalizedList = normalizeCertifications(certifications)
     dispatch(fetchListSuccess(normalizedList))
   })
     .catch((error) => {

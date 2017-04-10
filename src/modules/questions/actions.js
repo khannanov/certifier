@@ -1,4 +1,6 @@
-import dbRef from '../../firebase'
+// import dbRef from '../../firebase'
+import { getQuestion } from './apiCalls'
+
 import {
   FETCH_QUESTIONS_BY_IDS_START,
   FETCH_QUESTIONS_BY_IDS_SUCCESS,
@@ -41,7 +43,7 @@ export const getQuestionsByIds = (ids) => dispatch => {
   return Promise.all(
     ids.map(id => {
       // console.log('send request ' + id);
-      return dbRef.child(`questions/${id}`).once('value')
+      return getQuestion(id)
         .then(snapshot => {
           return { id, ...snapshot.val() }
         })
