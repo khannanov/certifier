@@ -1,5 +1,9 @@
-// import dbRef from '../../firebase'
-import { getAll } from './apiCalls'
+import {
+  getAll,
+  getById,
+  create,
+  update
+} from './apiCalls'
 
 import {
   FETCH_CERTIFICATIONS_START,
@@ -72,30 +76,15 @@ const addFailure = error => ({
   payload: error
 })
 
-const certificationCreate = certification => {
-  const newKey = dbRef.child('certifications').push().key;
-
-  const updates = {}
-  updates['/certifications/' + newKey] = certification
-
-  return dbRef.update(updates)
-}
-
 export const addCertification = certification => dispatch => {
   dispatch(addStart())
-  return certificationCreate(certification).then(response => {
+  return create(certification).then(response => {
     dispatch(addSuccess(response.val()))
   })
     .catch(error => dispatch(addFailure(error)))
 }
 
 // edit
-
-const certificationUpdate = certification => {
-  return dbRef('/certifications/' + certification.id).set({
-    ...certification
-  })
-}
 
 const editStart = () => ({
   type: EDIT_CERTIFICATIONS_START
@@ -113,7 +102,7 @@ const editFailure = error => ({
 
 export const editCertification = certification => dispatch => {
   dispatch(editStart())
-  return certificationUpdate(certification).then(() => {
+  return update(certification).then(() => {
     // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
     dispatch(editSuccess(certification))
   })
@@ -141,7 +130,7 @@ const fetchByIdFailure = error => ({
 
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
-  return dbRef.child(`/certifications/${id}`).once('value').then(snapshot => {
+  return getById(id).then(snapshot => {
     const certification = {
       id,
       ...snapshot.val(),

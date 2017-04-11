@@ -1,8 +1,8 @@
+jest.mock('./apiCalls')
+
 import * as actions from './actions'
-import firebaseMock from '../../../config/firebase.db.mock'
 import normalizedMock from '../../../config/normalized.db.mock'
 import thunk from 'redux-thunk'
-import { fbs as FirebaseServer } from '../../firebase';
 
 import {
   FETCH_CERTIFICATIONS_START,
@@ -18,12 +18,8 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 const certifications = normalizedMock.certifications;
 
-describe('certificate async actions', () => {
-  afterEach(() => {
-    FirebaseServer.close( console.log('close server'));
-  })
-
-  xit('creates FETCH_CERTIFICATIONS_SUCCESS when fetching certifications has been done', () => {
+fdescribe('certificate async actions', () => {
+  fit('creates FETCH_CERTIFICATIONS_SUCCESS when fetching certifications has been done', () => {
     const expectedActions = [
       { type: FETCH_CERTIFICATIONS_START },
       {
@@ -39,7 +35,7 @@ describe('certificate async actions', () => {
       })
   })
 
-  xit('creates FETCH_CERTIFICATION_BY_ID_SUCCESS when fetching certification has been done', () => {
+  fit('creates FETCH_CERTIFICATION_BY_ID_SUCCESS when fetching certification has been done', () => {
     const expectedActions = [
       { type: FETCH_CERTIFICATION_BY_ID_START},
       {

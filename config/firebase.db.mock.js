@@ -13,9 +13,9 @@ const storeMock = {
       name: 'Certification name #2',
       description: 'certification description #2',
       questions: {
+        q3: true,
         q4: true,
         q5: true,
-        q3: true
       }
     },
   },
