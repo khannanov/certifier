@@ -1,27 +1,16 @@
-const certifications = {
-  cert1: {
-    name: 'Certification name',
-    description: 'certification description',
-    questions: {
-      q1: true,
-      q2: true,
-      q3: true
-    }
-  },
-  cert2: {
-    name: 'Certification name #2',
-    description: 'certification description #2',
-    questions: {
-      q3: true,
-      q4: true,
-      q5: true,
-    }
-  },
+import { certifications } from '../../../../config/firebase.db.mock'
+// todo fake snapshot object
+const snapshot = {
+  obj: {},
+  val: () => this.obj
 }
+
+
 
 export const getAll = () => {
   return new Promise((resolve, reject) => {
-    process.nextTick(() => resolve(certifications));
+    snapshot.obj = certifications
+    process.nextTick(() => resolve(snapshot));
   })
 }
 

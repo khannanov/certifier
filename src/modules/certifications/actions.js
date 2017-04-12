@@ -50,8 +50,8 @@ const normalizeCertifications = certifications => {
 export const getCertificationsList = () => dispatch => {
   dispatch(fetchListStart())
 
-  return getAll().then(certifications => {
-    const normalizedList = normalizeCertifications(certifications)
+  return getAll().then(snapshot => {
+    const normalizedList = normalizeCertifications(snapshot.val())
     dispatch(fetchListSuccess(normalizedList))
   })
     .catch((error) => {
@@ -133,11 +133,11 @@ const fetchByIdFailure = error => ({
 
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
-  return getById(id).then(certification => {
+  return getById(id).then(snapshot => {
     const normalized = {
       id,
-      ...certification,
-      questions: Object.keys(certification.questions)
+      ...snapshot.val(),
+      questions: Object.keys(snapshot.val().questions)
     }
     dispatch(fetchByIdSuccess(normalized))
   })
