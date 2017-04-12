@@ -1,3 +1,5 @@
+jest.mock('./apiCalls')
+
 import {
   getQuestionsByIds,
   addQuestion
@@ -12,17 +14,12 @@ import {
   ADD_QUESTION_SUCCESS
 } from './actionTypes'
 import configureMockStore from 'redux-mock-store'
-import { fbs as FirebaseServer } from '../../firebase'
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 describe('question async actions', () => {
-  afterEach(() => {
-    FirebaseServer.close( console.log('close server'));
-  })
-
-  fit('creates FETCH_QUESTIONS_BY_IDS_SUCCESS when fetching certifications has been done', () => {
+  it('creates FETCH_QUESTIONS_BY_IDS_SUCCESS when fetching certifications has been done', () => {
     const expectedActions = [
       { type: FETCH_QUESTIONS_BY_IDS_START },
       {
@@ -39,7 +36,7 @@ describe('question async actions', () => {
       })
   })
 
-  fit(`create ${ADD_QUESTION_SUCCESS} when adding question has been done`, () => {
+  it(`create ${ADD_QUESTION_SUCCESS} when adding question has been done`, () => {
     const expectedActions = [
       { type: ADD_QUESTION_START },
       {

@@ -1,5 +1,8 @@
-// import dbRef from '../../firebase'
-import { getQuestion } from './apiCalls'
+import {
+  getById,
+  getNewId,
+  create
+} from './apiCalls'
 
 import {
   FETCH_QUESTIONS_BY_IDS_START,
@@ -41,13 +44,7 @@ export const getQuestionsByIds = (ids) => dispatch => {
   dispatch(fetchByIdsStart())
 
   return Promise.all(
-    ids.map(id => {
-      // console.log('send request ' + id);
-      return getQuestion(id)
-        .then(snapshot => {
-          return { id, ...snapshot.val() }
-        })
-    })
+    ids.map(id => getById(id).then(question => ({ id, ...question })))
   ).then(r => {
     const questions = normalizeQuestions(r)
     dispatch(fetchByIdsSuccess(questions))
@@ -72,23 +69,12 @@ const addFailure = error => ({
   payload: error
 })
 
-const questionCreate = (question, certId) => {
-  const newKey = dbRef.child('questions').push().key;
-
-  const updates = {}
-  updates['/questions/' + newKey] = question
-  updates['/certifications/' + certId + '/questions/' + newKey] = true
-
-  return dbRef.update(updates)
-}
-
 export const addQuestion = (question, certId) => dispatch => {
-  dispatch(addStart)
+  dispatch(addStart())
+  const id = getNewId()
 
-  return questionCreate(question, certId).then(snap => {
-    console.log('----snap.val() ', snap.val());
-
-    dispatch(addSuccess(snap.val()))
+  return create(question, id, certId).then(() => {
+    dispatch(addSuccess({ id, ...question }))
   })
     .catch(error => dispatch(addFailure(error)))
 }

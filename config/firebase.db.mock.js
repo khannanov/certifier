@@ -37,7 +37,6 @@ const storeMock = {
       },
     },
     q3: {
-      id: 'q3',
       name: 'question #3',
       answers: {
         a7: true,

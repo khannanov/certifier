@@ -5,16 +5,11 @@ import CertificationForm from '../components/CertificationForm'
 import normalizedMock from '../../../../config/normalized.db.mock'
 import RaisedButton from 'material-ui/RaisedButton'
 import questions from '../../questions'
-import { fbs as FirebaseServer } from '../../../firebase';
 
 const { QuestionListContainer } = questions.containers
 let wrapper
 
-xdescribe(`CertificationEdit container`, () => {
-  afterAll(() => {
-    FirebaseServer.close( console.log('close server'));
-  })
-
+describe(`CertificationEdit container`, () => {
   beforeEach(() => {
     wrapper = shallow(<CertificationEdit certification={normalizedMock.certifications.cert1}/>)
   })

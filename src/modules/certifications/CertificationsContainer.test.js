@@ -2,7 +2,6 @@ import React from 'react';
 import ConnectedCertificationsContainer, { CertificationsContainer } from './CertificationsContainer'
 import CertificationsList from './components/CertificationsList'
 import { shallow, mount } from 'enzyme';
-import normalizedMock from '../../../config/normalized.db.mock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -10,13 +9,7 @@ import { Provider } from 'react-redux';
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
-import { fbs as FirebaseServer } from '../../firebase';
-
-xdescribe('container CertificationsList', () => {
-  afterEach(() => {
-    FirebaseServer.close( console.log('close server'));
-  })
-
+describe('container CertificationsList', () => {
   it('should render without crash', () => {
     shallow(<CertificationsContainer/>);
   })
