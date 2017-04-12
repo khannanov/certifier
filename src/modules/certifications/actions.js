@@ -2,7 +2,8 @@ import {
   getAll,
   getById,
   create,
-  update
+  update,
+  getNewKey
 } from './apiCalls'
 
 import {
@@ -78,8 +79,11 @@ const addFailure = error => ({
 
 export const addCertification = certification => dispatch => {
   dispatch(addStart())
-  return create(certification).then(response => {
-    dispatch(addSuccess(response.val()))
+  const newKey = getNewKey()
+
+  return create(certification, newKey).then(() => {
+    // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
+    dispatch(addSuccess({ ...certification, id: newKey }))
   })
     .catch(error => dispatch(addFailure(error)))
 }
@@ -103,7 +107,6 @@ const editFailure = error => ({
 export const editCertification = certification => dispatch => {
   dispatch(editStart())
   return update(certification).then(() => {
-    // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
     dispatch(editSuccess(certification))
   })
     .catch(error => {

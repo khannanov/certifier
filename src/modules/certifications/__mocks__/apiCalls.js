@@ -34,10 +34,12 @@ export const getById = id => {
   })
 }
 
-// export const create = (certificate) => {
-//   return dbRef.child('certifications' + getNewKey())
-//     .set(certificate)
-// }
+export const create = (certification, newId) => {
+  return new Promise((resolve, reject) => {
+    // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
+    process.nextTick(() => resolve())
+  })
+}
 //
 // export const update = (certificate) => {
 //   return dbRef.child('certifications' + certificate.id).update(certificate);

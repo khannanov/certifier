@@ -9,7 +9,9 @@ import {
   FETCH_CERTIFICATIONS_SUCCESS,
   FETCH_CERTIFICATIONS_FAILURE,
   FETCH_CERTIFICATION_BY_ID_START,
-  FETCH_CERTIFICATION_BY_ID_SUCCESS
+  FETCH_CERTIFICATION_BY_ID_SUCCESS,
+  ADD_CERTIFICATIONS_START,
+  ADD_CERTIFICATIONS_SUCCESS
 } from './actionTypes'
 
 import configureMockStore from 'redux-mock-store'
@@ -27,12 +29,10 @@ fdescribe('certificate async actions', () => {
         payload: certifications
       }
     ]
-    const store = mockStore({ certifications: [] })
+    const store = mockStore({ certifications: {} })
 
     return store.dispatch(actions.getCertificationsList())
-      .then(() => { // return of async actions
-        expect(store.getActions()).toEqual(expectedActions)
-      })
+      .then(() => expect(store.getActions()).toEqual(expectedActions))
   })
 
   fit('creates FETCH_CERTIFICATION_BY_ID_SUCCESS when fetching certification has been done', () => {
@@ -46,8 +46,27 @@ fdescribe('certificate async actions', () => {
     const store = mockStore({ certifications: {} })
 
     return store.dispatch(actions.fetchCertificationById(certifications.cert1.id))
-      .then(() => { // return of async actions
-        expect(store.getActions()).toEqual(expectedActions)
-      })
+      .then(() => expect(store.getActions()).toEqual(expectedActions))
+  })
+
+  fit('creates ADD_CERTIFICATIONS_SUCCESS when fetching certification has been done', () => {
+    const newId = 'mockId'
+
+    const newCertification = {
+      name: 'test cert name',
+      description: 'test description name'
+    }
+
+    const expectedActions = [
+      { type: ADD_CERTIFICATIONS_START },
+      {
+        type: ADD_CERTIFICATIONS_SUCCESS,
+        payload: { ...newCertification, id: newId }
+      }
+    ]
+    const store = mockStore({ certifications: {} })
+
+    return store.dispatch(actions.addCertification(newCertification))
+      .then(() => expect(store.getActions()).toEqual(expectedActions))
   })
 })
