@@ -40,7 +40,11 @@ export const create = (certification, newId) => {
     process.nextTick(() => resolve())
   })
 }
-//
-// export const update = (certificate) => {
-//   return dbRef.child('certifications' + certificate.id).update(certificate);
-// }
+
+export const getNewKey = () => 'mockId'
+
+export const update = (certificate) => {
+  return new Promise((resolve, reject) => {
+    process.nextTick(() => resolve(certificate))
+  })
+}

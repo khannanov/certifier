@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect }  from 'react-redux'
 import CertificationForm from '../components/CertificationForm'
-import { editCertification, fetchCertificationById } from '../actions'
+import { updateCertification, fetchCertificationById } from '../actions'
 import questions from '../../questions'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -26,7 +26,7 @@ export class CertificationEdit extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    this.props.editCertification(this.state)
+    this.props.updateCertification(this.state)
   }
 
   onChange = field => e => {
@@ -73,4 +73,4 @@ CertificationEdit.propTypes = {
 export default connect(({ certifications }, props) => ({
     // todo selector with questions
     certification: certifications[props.match.params.id]
-}), { editCertification, fetchCertificationById })(CertificationEdit)
+}), { updateCertification, fetchCertificationById })(CertificationEdit)

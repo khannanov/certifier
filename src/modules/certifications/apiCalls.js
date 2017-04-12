@@ -2,7 +2,7 @@ import dbRef from '../../firebase'
 
 export const getAll = () => dbRef.child('certifications').once('value')
 
-export const getById = id => dbRef.child('certifications/' + id).once('value')
+export const getById = (id) => dbRef.child('certifications/' + id).once('value')
 
 export const create = (certificate, newId) => {
   // no response @see https://firebase.google.com/docs/reference/js/firebase.database.Reference#set
@@ -11,7 +11,7 @@ export const create = (certificate, newId) => {
 }
 
 export const update = (certificate) => {
-  return dbRef.child('certifications' + certificate.id).update(certificate);
+  return dbRef.child('certifications/' + certificate.id).update(certificate);
 }
 
 export const getNewKey = () => dbRef.child('certifications').push().key

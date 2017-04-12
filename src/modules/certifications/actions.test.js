@@ -11,7 +11,9 @@ import {
   FETCH_CERTIFICATION_BY_ID_START,
   FETCH_CERTIFICATION_BY_ID_SUCCESS,
   ADD_CERTIFICATIONS_START,
-  ADD_CERTIFICATIONS_SUCCESS
+  ADD_CERTIFICATIONS_SUCCESS,
+  UPDATE_CERTIFICATIONS_START,
+  UPDATE_CERTIFICATIONS_SUCCESS,
 } from './actionTypes'
 
 import configureMockStore from 'redux-mock-store'
@@ -67,6 +69,21 @@ fdescribe('certificate async actions', () => {
     const store = mockStore({ certifications: {} })
 
     return store.dispatch(actions.addCertification(newCertification))
+      .then(() => expect(store.getActions()).toEqual(expectedActions))
+  })
+
+  fit('creates UPDATE_CERTIFICATIONS_SUCCESS when fetching certification has been done', () => {
+
+    const expectedActions = [
+      { type: UPDATE_CERTIFICATIONS_START },
+      {
+        type: UPDATE_CERTIFICATIONS_SUCCESS,
+        payload: { ...certifications.cert1 }
+      }
+    ]
+    const store = mockStore({ certifications: {} })
+
+    return store.dispatch(actions.updateCertification(certifications.cert1))
       .then(() => expect(store.getActions()).toEqual(expectedActions))
   })
 })

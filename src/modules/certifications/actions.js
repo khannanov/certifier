@@ -13,9 +13,9 @@ import {
   ADD_CERTIFICATIONS_START,
   ADD_CERTIFICATIONS_SUCCESS,
   ADD_CERTIFICATIONS_FAILURE,
-  EDIT_CERTIFICATIONS_START,
-  EDIT_CERTIFICATIONS_SUCCESS,
-  EDIT_CERTIFICATIONS_FAILURE,
+  UPDATE_CERTIFICATIONS_START,
+  UPDATE_CERTIFICATIONS_SUCCESS,
+  UPDATE_CERTIFICATIONS_FAILURE,
   FETCH_CERTIFICATION_BY_ID_START,
   FETCH_CERTIFICATION_BY_ID_SUCCESS,
   FETCH_CERTIFICATION_BY_ID_FAILURE,
@@ -90,28 +90,28 @@ export const addCertification = certification => dispatch => {
 
 // edit
 
-const editStart = () => ({
-  type: EDIT_CERTIFICATIONS_START
+const updateStart = () => ({
+  type: UPDATE_CERTIFICATIONS_START
 })
 
-const editSuccess = certification => ({
-  type: EDIT_CERTIFICATIONS_SUCCESS,
+const updateSuccess = certification => ({
+  type: UPDATE_CERTIFICATIONS_SUCCESS,
   payload: certification
 })
 
-const editFailure = error => ({
-  type: EDIT_CERTIFICATIONS_FAILURE,
+const updateFailure = error => ({
+  type: UPDATE_CERTIFICATIONS_FAILURE,
   payload: error
 })
 
-export const editCertification = certification => dispatch => {
-  dispatch(editStart())
+export const updateCertification = certification => dispatch => {
+  dispatch(updateStart())
   return update(certification).then(() => {
-    dispatch(editSuccess(certification))
+    dispatch(updateSuccess(certification))
   })
     .catch(error => {
       console.error(error);
-      dispatch(editFailure(error))
+      dispatch(updateFailure(error))
     })
 }
 
@@ -133,13 +133,13 @@ const fetchByIdFailure = error => ({
 
 export const fetchCertificationById = id => dispatch => {
   dispatch(fetchByIdStart())
-  return getById(id).then(snapshot => {
-    const certification = {
+  return getById(id).then(certification => {
+    const normalized = {
       id,
-      ...snapshot.val(),
-      questions: Object.keys(snapshot.val().questions)
+      ...certification,
+      questions: Object.keys(certification.questions)
     }
-    dispatch(fetchByIdSuccess(certification))
+    dispatch(fetchByIdSuccess(normalized))
   })
     .catch(error => dispatch(fetchByIdFailure(error)))
 }
