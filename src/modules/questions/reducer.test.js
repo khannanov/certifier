@@ -1,7 +1,8 @@
 import reducer from './reducer'
 import {
   FETCH_QUESTIONS_BY_IDS_SUCCESS,
-  ADD_QUESTION_SUCCESS
+  ADD_QUESTION_SUCCESS,
+  FETCH_QUESTION_BY_ID_SUCCESS
 } from './actionTypes'
 import normalizedMock from '../../../config/normalized.db.mock'
 
@@ -14,7 +15,7 @@ describe('reducer certifications', () => {
     ).toEqual(initialState)
   })
 
-  fit(`should handle ${FETCH_QUESTIONS_BY_IDS_SUCCESS}`, () => {
+  it(`should handle ${FETCH_QUESTIONS_BY_IDS_SUCCESS}`, () => {
     expect(
       reducer(initialState, {
         type: FETCH_QUESTIONS_BY_IDS_SUCCESS,
@@ -23,12 +24,21 @@ describe('reducer certifications', () => {
     ).toEqual(normalizedMock.questions)
   })
 
-  fit(`should handle ${ADD_QUESTION_SUCCESS}`, () => {
+  it(`should handle ${ADD_QUESTION_SUCCESS}`, () => {
     expect(
       reducer(initialState, {
         type: ADD_QUESTION_SUCCESS,
         payload: normalizedMock.questions.q4
       })
     ).toEqual(normalizedMock.questions.q4)
+  })
+
+  it(`should handle ${FETCH_QUESTION_BY_ID_SUCCESS}`, () => {
+    expect(
+      reducer(initialState, {
+        type: FETCH_QUESTION_BY_ID_SUCCESS,
+        payload: normalizedMock.questions.q4
+      })
+    ).toEqual({['q4']: normalizedMock.questions.q4})
   })
 })

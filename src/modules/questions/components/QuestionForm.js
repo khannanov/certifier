@@ -4,17 +4,18 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 const QuestionForm = (props) => {
   const {
-    name,
+    question,
     onSubmit,
     onChange
-  } = props;
+  } = props
 
   return (
     <form onSubmit={onSubmit}>
       <TextField
-        value={name}
+        dataset="name"
+        value={question.name}
         floatingLabelText="Question name"
-        onChange={onChange('name')}
+        onChange={onChange}
       /><br />
       <RaisedButton label="Submit" primary={true} type="submit"/>
     </form>

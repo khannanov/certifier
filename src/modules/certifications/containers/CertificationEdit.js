@@ -52,7 +52,9 @@ export class CertificationEdit extends Component {
                       href={`/certification/${this.state.id}/question/add/`}
                       labelPosition="before"
         />
-        <QuestionListContainer questionsIds={this.state.questions}/>
+        <QuestionListContainer questionsIds={this.state.questions}
+                               certificationId={this.props.match.params.id}
+        />
       </div>
     )
   }

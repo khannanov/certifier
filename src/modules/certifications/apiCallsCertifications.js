@@ -1,3 +1,4 @@
+// todo weird naming because of jest mocks problem @see https://github.com/facebook/jest/issues/2070
 import dbRef from '../../firebase'
 
 export const getAll = () => dbRef.child('certifications').once('value')

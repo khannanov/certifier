@@ -14,7 +14,7 @@ export class QuestionListContainer extends Component {
 
   render () {
     return (
-      <QuestionList questions={this.props.questions}/>
+      <QuestionList questions={this.props.questions} certificationId={this.props.certificationId}/>
     )
   }
 }
@@ -25,6 +25,7 @@ QuestionListContainer.defaultProps = {
 }
 
 QuestionListContainer.propTypes = {
+  certificationId: PropTypes.number.isRequired,
   questionsIds: PropTypes.array.isRequired,
   getQuestionsByIds: PropTypes.func,
   questions: PropTypes.objectOf(
@@ -43,9 +44,7 @@ export default connect(
 
     const filteredQuestions = {}
 
-    filteredIds.map(id => {
-      filteredQuestions[id] = questions[id]
-    })
+    filteredIds.map(id => filteredQuestions[id] = questions[id])
 
     return { questions: filteredQuestions }
   },

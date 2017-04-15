@@ -4,7 +4,7 @@ import {
   create,
   update,
   getNewKey
-} from './apiCalls'
+} from './apiCallsCertifications'
 
 import {
   FETCH_CERTIFICATIONS_START,
@@ -42,6 +42,8 @@ const normalizeCertifications = certifications => {
     const { id = key, name, description, questions } = certifications[key]
     normCertifications[id] = { id, name, description }
     normCertifications[id]['questions'] = Object.keys(questions)
+
+    return normCertifications
   })
 
   return normCertifications;

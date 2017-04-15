@@ -1,4 +1,4 @@
-jest.mock('./apiCalls')
+jest.mock('./apiCallsQuestions')
 
 import {
   getQuestionsByIds,

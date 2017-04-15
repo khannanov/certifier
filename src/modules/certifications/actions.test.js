@@ -1,4 +1,4 @@
-jest.mock('./apiCalls')
+jest.mock('./apiCallsCertifications')
 
 import * as actions from './actions'
 import normalizedMock from '../../../config/normalized.db.mock'

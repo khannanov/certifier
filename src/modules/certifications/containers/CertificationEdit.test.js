@@ -9,7 +9,7 @@ import questions from '../../questions'
 const { QuestionListContainer } = questions.containers
 let wrapper
 
-describe(`CertificationEdit container`, () => {
+xdescribe(`CertificationEdit container`, () => {
   beforeEach(() => {
     wrapper = shallow(<CertificationEdit certification={normalizedMock.certifications.cert1}/>)
   })

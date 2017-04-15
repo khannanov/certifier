@@ -28,7 +28,7 @@ ReactDOM.render(
             <Route exact path="/add" component={certifications.containers.CertificationAdd}/>
             <Route path="/edit/:id" component={certifications.containers.CertificationEdit}/>
             <Route exact path="/certification/:id/question/add" component={questions.containers.QuestionAddContainer}/>
-            <Route exact path="/certification/:id/question/:id" component={questions.containers.QuestionEditContainer}/>
+            <Route exact path="/certification/:cid/question/edit/:qid" component={questions.containers.QuestionEditContainer}/>
             <Route render={({location}) => (
               <div>
                 <h3>404. No match for <code>{location.pathname}</code></h3>

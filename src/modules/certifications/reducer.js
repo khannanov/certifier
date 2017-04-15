@@ -11,9 +11,7 @@ export default function(state = initialState, action) {
   switch (type) {
     case FETCH_CERTIFICATIONS_SUCCESS:
       const certifications = {}
-       Object.keys(state).map(id => {
-         certifications[id] = { ...state[id] }
-      })
+       Object.keys(state).map(id => certifications[id] = { ...state[id] })
 
       return {
         ...certifications,

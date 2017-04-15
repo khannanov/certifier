@@ -1,23 +1,19 @@
 import { certifications } from '../../../../config/firebase.db.mock'
-// todo fake snapshot object
-const snapshot = {
-  obj: {},
-  val: () => this.obj
+
+const snapshot = (obj) => {
+  return { val: () => obj }
 }
-
-
 
 export const getAll = () => {
   return new Promise((resolve, reject) => {
-    snapshot.obj = certifications
-    process.nextTick(() => resolve(snapshot));
+    process.nextTick(() => resolve(snapshot(certifications)));
   })
 }
 
 export const getById = id => {
   return new Promise((resolve, reject) => {
     process.nextTick(() => certifications[id] ?
-      resolve(certifications[id]) :
+      resolve(snapshot(certifications[id])) :
       reject({ error: `certification with id ${id} not found` })
     )
   })
@@ -34,6 +30,6 @@ export const getNewKey = () => 'mockId'
 
 export const update = (certificate) => {
   return new Promise((resolve, reject) => {
-    process.nextTick(() => resolve(certificate))
+    process.nextTick(() => resolve(snapshot(certificate)))
   })
 }

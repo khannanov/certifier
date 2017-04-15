@@ -12,7 +12,7 @@ firebase.initializeApp(config)
 const dbRef = firebase.database().ref()
 
 dbRef.once('value', function(snap) {
-  console.log('Got value: ', snap.val())
+  // console.log('Got value: ', snap.val())
 });
 
 export default dbRef
