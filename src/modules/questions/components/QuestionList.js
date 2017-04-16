@@ -18,7 +18,7 @@ const QuestionList = ({questions, certificationId}) =>
   </div>
 
 QuestionList.propTypes = {
-  certificationId: PropTypes.number.isRequired,
+  certificationId: PropTypes.string.isRequired,
   questions: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.string,

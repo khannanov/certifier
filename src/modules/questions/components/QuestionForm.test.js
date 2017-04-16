@@ -41,4 +41,10 @@ describe('entering some text', () => {
   it('should call onChange on input changes', () => {
     expect(onChange).toBeCalledWith(value)
   })
+
+  it('should call onSubmit on form submit', () => {
+    const e = { preventDefault: jest.fn() }
+    component.simulate('submit', e)
+    expect(onSubmit).toBeCalledWith(e)
+  })
 })

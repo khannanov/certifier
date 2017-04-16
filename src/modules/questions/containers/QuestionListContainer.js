@@ -25,7 +25,7 @@ QuestionListContainer.defaultProps = {
 }
 
 QuestionListContainer.propTypes = {
-  certificationId: PropTypes.number.isRequired,
+  certificationId: PropTypes.string.isRequired,
   questionsIds: PropTypes.array.isRequired,
   getQuestionsByIds: PropTypes.func,
   questions: PropTypes.objectOf(

@@ -31,7 +31,8 @@ class QuestionEditContainer extends Component {
     this.props.updateCertification(this.state)
   }
 
-  onChange = ({ target }) => {
+  onChange = e => {
+    const { target } = e
     e.preventDefault()
     this.setState({ [target.dataset.name]: target.value })
   }
