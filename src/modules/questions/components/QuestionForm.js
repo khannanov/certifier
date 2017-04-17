@@ -12,10 +12,9 @@ const QuestionForm = (props) => {
   return (
     <form onSubmit={onSubmit}>
       <TextField
-        dataset="name"
         value={question.name}
         floatingLabelText="Question name"
-        onChange={onChange}
+        onChange={onChange('name')}
       /><br />
       <RaisedButton label="Submit" primary={true} type="submit"/>
     </form>

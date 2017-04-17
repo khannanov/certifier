@@ -39,7 +39,7 @@ describe('entering some text', () => {
   })
 
   it('should call onChange on input changes', () => {
-    expect(onChange).toBeCalledWith(value)
+    expect(onChange).toBeCalledWith('name')
   })
 
   it('should call onSubmit on form submit', () => {

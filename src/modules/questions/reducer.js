@@ -11,6 +11,7 @@ export default function(state = initialState, action) {
   const { type, payload } = action
 
   switch (type) {
+    case UPDATE_QUESTION_SUCCESS:
     case FETCH_QUESTION_BY_ID_SUCCESS:
       return {
         ...state,
@@ -21,7 +22,6 @@ export default function(state = initialState, action) {
         ...state,
         ...payload
       }
-    case UPDATE_QUESTION_SUCCESS:
     case ADD_QUESTION_SUCCESS:
       return {
         ...state,

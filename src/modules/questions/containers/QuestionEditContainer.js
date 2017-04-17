@@ -28,13 +28,14 @@ class QuestionEditContainer extends Component {
   onSubmit = e => {
     e.preventDefault()
 
-    this.props.updateCertification(this.state)
+    this.props.updateQuestion(this.state)
   }
 
-  onChange = e => {
-    const { target } = e
+  onChange = name => e => {
     e.preventDefault()
-    this.setState({ [target.dataset.name]: target.value })
+    const { target } = e
+
+    this.setState({ [name]: target.value })
   }
 
   render () {

@@ -1,7 +1,8 @@
 import {
   getById,
   getNewId,
-  create
+  create,
+  update
 } from './apiCallsQuestions'
 import {
   FETCH_QUESTIONS_BY_IDS_START,
@@ -104,7 +105,7 @@ export const updateQuestion = (question, certId) => dispatch => {
   dispatch(updateStart())
   const id = getNewId()
 
-  return create(question, id, certId).then(() => {
+  return update(question, id, certId).then(() => {
     dispatch(updateSuccess({ id, ...question }))
   })
     .catch(error => dispatch(updateFailure(error)))
