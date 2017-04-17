@@ -3,10 +3,13 @@ import React, {
   PropTypes
 } from 'react'
 import QuestionForm from '../components/QuestionForm'
+import answers from '../../answers'
 import { getQuestionById, updateQuestion } from '../actions'
 import { connect } from 'react-redux'
 
-class QuestionEditContainer extends Component {
+const { AnswerList } = answers.components
+
+export class QuestionEditContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -46,6 +49,7 @@ class QuestionEditContainer extends Component {
                       onChange={this.onChange}
                       question={this.state}
         />
+        <AnswerList questionId={this.state.id}/>
       </div>
     )
   }
@@ -57,7 +61,9 @@ QuestionEditContainer.propTypes = {
       qid: PropTypes.string.isRequired,
       cid: PropTypes.string.isRequired,
     })
-  })
+  }).isRequired,
+  updateQuestion: PropTypes.func,
+  getQuestionById: PropTypes.func
 }
 
 export default connect(
