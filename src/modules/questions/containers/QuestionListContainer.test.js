@@ -37,12 +37,14 @@ describe('container QuestionList', () => {
 describe('connected container QuestionList', () => {
   it('should contain action prop', () => {
     // todo @see http://www.thereformedprogrammer.net/unit-testing-react-components-that-use-redux/
-    const store = mockStore({})
+    const store = mockStore({ questions: {} })
 
-    const wrapper = mount(
+    const wrapper = shallow(
       <Provider store={store}>
         <QuestionListContainerConnected questionsIds={Object.keys(normalizedMock.questions)}
-                                        getQuestionsByIds={getQuestionsByIds}/>
+                                        getQuestionsByIds={getQuestionsByIds}
+                                        certificationId={certification.id}
+        />
       </Provider>
     )
     expect(wrapper.props().getQuestionsByIds).toBeDefined()

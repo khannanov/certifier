@@ -38,13 +38,13 @@ QuestionListContainer.propTypes = {
 }
 
 export default connect(
-  ({ questions }, props) => {
-    const filteredIds = Object.keys(questions).filter(qid =>
+  (state, props) => {
+    const filteredIds = Object.keys(state.questions).filter(qid =>
       props.questionsIds.includes(qid))
 
     const filteredQuestions = {}
 
-    filteredIds.map(id => filteredQuestions[id] = questions[id])
+    filteredIds.map(id => filteredQuestions[id] = state.questions[id])
 
     return { questions: filteredQuestions }
   },
