@@ -11,7 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 //
-
+Error.stackTraceLimit = 10;
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
@@ -38,7 +38,7 @@ describe('QuestionAddContainer component', () => {
 })
 
 describe('QuestionAddContainer connected', () => {
-  it('should contain AnswersList component', () => {
+  it('mounted should contain AnswersList component', () => {
     const store = mockStore({ })
     const getQuestionById = jest.fn()
     const updateQuestion = jest.fn()

@@ -23,6 +23,8 @@ export class QuestionEditContainer extends Component {
   }
 
   componentDidMount () {
+
+    console.log('didmount')
     if (!this.props.question) {
       this.props.getQuestionById(this.props.match.params.qid)
     }
@@ -49,7 +51,7 @@ export class QuestionEditContainer extends Component {
                       onChange={this.onChange}
                       question={this.state}
         />
-        <AnswerList questionId={this.state.id}/>
+        {answers && <AnswerList questionId={this.props.match.params.qid} answers={answers}/>}
       </div>
     )
   }
